@@ -6,5 +6,8 @@ defmodule Test do
     IO.inspect Trace.pry(:Y, :y, :c)
     :ok
   end
-  
+  # Test.run(5)
+  # => 28.0
+  # => [5, 25.0]
+  # => :ok
 end
