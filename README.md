@@ -26,3 +26,68 @@
   end
 ```
 
+## trace a given variable in a given function and module
+
+```elixir
+  defmodule X do
+    def y(h) do
+      a = 1
+      b = 2
+      c = h
+      c = :math.pow(c, 2)
+      a + b + c
+    end
+  end
+
+  defmodule Y do
+    def x(h) do
+      a = 1
+      b = 2
+      c = h
+      c = :math.pow(c, 2)
+      a + b + c
+    end
+
+    def y(h) do
+      a = 1
+      b = 2
+      c = h
+      c = :math.pow(c, 2)
+      a + b + c
+    end
+
+    def z(h) do
+      a = 1
+      b = 2
+      c = h
+      c = :math.pow(c, 2)
+      a + b + c
+    end
+  end
+
+  defmodule Z do
+    def y(h) do
+      a = 1
+      b = 2
+      c = h
+      c = :math.pow(c, 2)
+      a + b + c
+    end
+  end
+```
+
+```elixir
+  defmodule Test do
+
+    def run(h) do
+      Trace.setup(:Y, :y, :c)
+      IO.inspect Y.y(h) 
+      IO.inspect Trace.pry(:Y, :y, :c)
+      :ok
+    end
+    # Test.run(5)
+    # => 28.0
+    # => [5, 25.0]
+    # => :ok
+  end
+```
