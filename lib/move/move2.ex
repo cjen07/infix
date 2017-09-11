@@ -1,5 +1,12 @@
 defmodule Move2 do
 
+  # in iex:
+  # import Move2
+  # start 10
+  # move 3, 4
+  # move 5, -3
+  # show
+
   def f(n, x) do
     k = n + x
     Enum.drop(0..x, 1)
